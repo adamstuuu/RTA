@@ -5,17 +5,13 @@ import sklearn
 import requests
 import io
 
-# utwórz obiekt app
 app = Flask(__name__)
-
-# skopiuj poprzednie podstrony aplikacji
-
 
 @app.route("/api/v1.0/predict", methods=['GET'])
 def fun():
     url = "https://github.com/adamstuuu/RTA/blob/main/perceptron.pkl"
     response = requests.get(url)
-    response.raise_for_status()  # Ensure the request was successful
+    response.raise_for_status() 
 
     picklefile = io.BytesIO(response.content)
     nn = pickle.load(picklefile)
